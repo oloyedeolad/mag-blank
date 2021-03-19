@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<csp_whitelist xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Csp:etc/csp_whitelist.xsd">
+    <policies>
+        <policy id="script-src">
+            <values>
+                <value id="digital-o-sub" type="host">https://klastatic.fra1.cdn.digitaloceanspaces.com</value>
+                <value id="digit-o" type="host">https://digitaloceanspaces.com</value>
+                <value id="digital-o-gate" type="host">https://gate.klasha.com</value>
+                <value id="digital-o-gate" type="host">https://klasha.com</value>
+            </values>
+        </policy>
+        <policy id="connect-src">
+            <values>
+                <value id="devdocs" type="host">https://klastatic.fra1.cdn.digitaloceanspaces.com</value>
+                <value id="digital-o-gate" type="host">https://gate.klasha.com</value>
+            </values>
+        </policy>
+    </policies>
+</csp_whitelist>
