@@ -94,7 +94,7 @@ define(
                 var checkoutConfig = window.checkoutConfig;
                 var paymentData = quote.billingAddress();
                 var configuration = checkoutConfig.sample_gateway;
-
+                console.log(checkoutConfig)
                 if (checkoutConfig.isCustomerLoggedIn) {
                     var customerData = checkoutConfig.customerData;
                     paymentData.email = customerData.email;
