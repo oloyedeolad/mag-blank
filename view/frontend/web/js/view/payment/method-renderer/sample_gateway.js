@@ -153,7 +153,7 @@ define(
                     }
                     $.ajax({
                         method: "GET",
-                        url:"https://ktests.com/nucleus/wordpressstatus/" + response.txnRef + "/" + quoteId,
+                        url:"https://ktests.com/nucleus/wordpressstatus/" + response.tx_ref + "/" + quoteId,
                     }).success(function (data) {
                         console.log("here is data: ", data);
 
