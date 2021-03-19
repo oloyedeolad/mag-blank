@@ -93,7 +93,7 @@ define(
                 if (checkoutConfig.isCustomerLoggedIn) {
                     var customerData = checkoutConfig.customerData;
                     paymentData.email = customerData.email;
-                    paymentData.phone = customerData.phone;
+                    // paymentData.phone = customerData.phone;
                     console.log("Customer Data: ", customerData)
                 } else {
                     var storageData = JSON.parse(
@@ -104,7 +104,7 @@ define(
                 }
 
                 var quoteId = checkoutConfig.quoteItemData[0].quote_id;
-
+                var total = quote.totals;
                 var _this = this;
                 _this.isPlaceOrderActionAllowed(false);
                 console.log(quote);
@@ -112,9 +112,9 @@ define(
                 var kit = {
                     currency: quote.currency,
                     callback: "",
-                    phone: paymentData.phone,
+                    phone: paymentData.telephone,
                     email: paymentData.email,
-                    fullname: "oladimeji",
+                    fullname: paymentData.firstname + " " + paymentData.lastname,
                     tx_ref: makeid(10),
                     paymentType: "mag",
                     callBack: callWhenDone,
@@ -132,23 +132,27 @@ define(
                     }
                     return result;
                 }
-
+                var dstCurrency = ""
                 function callWhenDone(data) {
                     console.log(data);
                 }
-
+                if (paymentData.countryId === "NG") {
+                    dstCurrency = "NGN"
+                } else if (paymentData.countryId === "KE") {
+                    dstCurrency = "KES"
+                }
                 var client = new KlashaClient(
                     "KRS7QdS8itVSL6rt86oI1usJGuYL0f7XNAULLhbrWCv3mAz38p93d3xCpuh0Vxvx",
-                    "1",
-                    quote.total,
+                    1,
+                    total.base_grand_total,
                     "holdy",
-                    "USD",
-                    "NGN",
+                    "",
+                    total.base_currency_code,
+                    dstCurrency,
                     kit
                 );
                 client.init();
             },
-
 
         });
     }

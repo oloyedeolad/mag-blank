@@ -9,6 +9,10 @@
                 <value id="digital-o-gate" type="host">https://klasha.com</value>
             </values>
         </policy>
+        <policy id="style-src">
+            <value id="digital-o-style" type="host">https://klastatic.fra1.cdn.digitaloceanspaces.com</value>
+            <value id="digital-o-gate" type="host">https://*.digitaloceanspaces.com</value>
+        </policy>
         <policy id="connect-src">
             <values>
                 <value id="devdocs" type="host">https://klastatic.fra1.cdn.digitaloceanspaces.com</value>
