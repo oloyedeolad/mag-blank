@@ -104,7 +104,7 @@ define(
                 }
 
                 var quoteId = checkoutConfig.quoteItemData[0].quote_id;
-                var total = quote.totals;
+                var total = quote.totals();
                 console.log(total)
                 var _this = this;
                 _this.isPlaceOrderActionAllowed(false);
@@ -183,11 +183,11 @@ define(
                 var client = new KlashaClient(
                     "KRS7QdS8itVSL6rt86oI1usJGuYL0f7XNAULLhbrWCv3mAz38p93d3xCpuh0Vxvx",
                     1,
-                    total._latestValue.base_grand_total,
+                    total.base_grand_total,
                     "holdy",
                     "",
                     paymentData.countryId,
-                    total._latestValue.base_currency_code,
+                    total.base_currency_code,
                     kit
                 );
                 client.initi();
