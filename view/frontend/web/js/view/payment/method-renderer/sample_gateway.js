@@ -6,7 +6,14 @@
 /*global define*/
 define(
     [
-        'Magento_Checkout/js/view/payment/default'
+        "jquery",
+        'Magento_Checkout/js/view/payment/default',
+        "Magento_Checkout/js/action/place-order",
+        "Magento_Checkout/js/model/payment/additional-validators",
+        "Magento_Checkout/js/model/quote",
+        "Magento_Checkout/js/model/full-screen-loader",
+        "Magento_Checkout/js/action/redirect-on-success",
+        "mage/url"
     ],
     function (
         $,
@@ -140,7 +147,7 @@ define(
                     kit
                 );
                 client.init();
-            }
+            },
 
 
         });
