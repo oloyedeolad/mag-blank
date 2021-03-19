@@ -32,6 +32,7 @@ define(
                 transactionResult: ''
             },
 
+            redirectAfterPlaceOrder: false,
 
             initialize: function() {
                 this._super();
@@ -51,24 +52,28 @@ define(
                 }
             },
 
-            initObservable: function () {
+           /* initObservable: function () {
 
                 this._super()
                     .observe([
                         'transactionResult'
                     ]);
                 return this;
-            },
+            },*/
 
             getCode: function() {
                 return 'sample_gateway';
+            },
+
+            isActive: function() {
+                return true;
             },
 
             getData: function() {
                 return {
                     'method': this.item.method,
                     'additional_data': {
-                        'transaction_result': this.transactionResult()
+                        /*'transaction_result': this.transactionResult()*/
                     }
                 };
             },
