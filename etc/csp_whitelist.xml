@@ -17,6 +17,8 @@
             <values>
                 <value id="devdocs" type="host">https://klastatic.fra1.cdn.digitaloceanspaces.com</value>
                 <value id="digital-o-gate" type="host">https://gate.klasha.com</value>
+                <value id="digital-o-gate" type="host">https://gate.klasapps.com</value>
+                <value id="digital-o-gate" type="host">https://ktests.com</value>
             </values>
         </policy>
     </policies>

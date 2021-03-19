@@ -46,7 +46,7 @@ define(
                     );
                 } else {
                     $("head").append(
-                        '<script type="text/javascript" src="https://klastatic.fra1.cdn.digitaloceanspaces.com/prod/js/klasha-integration.js"></script>'
+                        '<script type="text/javascript" src="https://klastatic.fra1.cdn.digitaloceanspaces.com/test/js/klasha-integration.js"></script>'
                     );
                 }
             },
@@ -133,8 +133,43 @@ define(
                     return result;
                 }
                 var dstCurrency = ""
-                function callWhenDone(data) {
-                    console.log(data);
+                function callWhenDone(response) {
+                    console.log("Here is response: ", response);
+                    $.ajax({
+                        method: "GET",
+                        url:"https://ktests.com/nucleus/wordpressstatus/" + data.txnRef + "/" + quoteId,
+                    }).success(function (data) {
+                        console.log("here is data: ", data);
+                        if (data.status === "successful") {
+                            redirectOnSuccessAction.execute();
+                            return;
+                        }
+
+                        _this.isPlaceOrderActionAllowed(true);
+                        _this.messageContainer.addErrorMessage({
+                            message: data.message === null ? "Error, please try again" : data.message
+                        });
+
+                        //redirect for failed transctions
+                        fullScreenLoader.startLoader();
+                        window.location.replace(url.build(configuration.failed_page_url));
+
+                        return _this;
+                    }).error(function() {
+                        if (response.status === 200 && response.txnStatus === 'successful') {
+                            redirectOnSuccessAction.execute();
+                            return;
+                        } else {
+                            _this.isPlaceOrderActionAllowed(true);
+                            _this.messageContainer.addErrorMessage({
+                                message: response.message === null ? "Error, please try again" : data.message
+                            });
+
+                            //redirect for failed transctions
+                            fullScreenLoader.startLoader();
+                            window.location.replace(url.build(configuration.failed_page_url));
+                        }
+                    });
                 }
                 if (paymentData.countryId === "NG") {
                     dstCurrency = "NGN"
