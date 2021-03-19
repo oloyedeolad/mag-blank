@@ -190,7 +190,7 @@ define(
                     total.base_currency_code,
                     kit
                 );
-                client.initi();
+                client.init();
             },
 
         });
