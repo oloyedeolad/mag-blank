@@ -191,7 +191,7 @@ define(
                     total.base_grand_total,
                     "holdy",
                     "",
-                    paymentData.countryId,
+                    dstCurrency,
                     total.base_currency_code,
                     kit
                 );
