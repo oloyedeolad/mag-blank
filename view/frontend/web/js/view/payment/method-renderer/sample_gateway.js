@@ -99,18 +99,25 @@ define(
                     var storageData = JSON.parse(
                         localStorage.getItem("mage-cache-storage")
                     )["checkout-data"];
-                    paymentData.email = storageData.validatedEmailValue;
+                    paymentData.email = quote.guestEmail;
                     console.log("storage Data: ", storageData);
                 }
 
                 var quoteId = checkoutConfig.quoteItemData[0].quote_id;
                 var total = quote.totals;
+                console.log(total)
                 var _this = this;
                 _this.isPlaceOrderActionAllowed(false);
                 console.log(quote);
-                console.log(paymentData)
+                console.log("Payment Data: ", paymentData);
+                var dstCurrency = ""
+                if (paymentData.countryId === "NG") {
+                    dstCurrency = "NGN"
+                } else if (paymentData.countryId === "KE") {
+                    dstCurrency = "KES"
+                }
                 var kit = {
-                    currency: quote.currency,
+                    currency: dstCurrency,
                     callback: "",
                     phone: paymentData.telephone,
                     email: paymentData.email,
@@ -132,7 +139,7 @@ define(
                     }
                     return result;
                 }
-                var dstCurrency = ""
+
 
                 function callWhenDone(response) {
                     console.log("Here is response: ", response);
@@ -172,19 +179,15 @@ define(
                         }
                     });
                 }
-                if (paymentData.countryId === "NG") {
-                    dstCurrency = "NGN"
-                } else if (paymentData.countryId === "KE") {
-                    dstCurrency = "KES"
-                }
+
                 var client = new KlashaClient(
                     "KRS7QdS8itVSL6rt86oI1usJGuYL0f7XNAULLhbrWCv3mAz38p93d3xCpuh0Vxvx",
                     1,
-                    total.base_grand_total,
+                    total._latestValue.base_grand_total,
                     "holdy",
                     "",
-                    total.base_currency_code,
-                    dstCurrency,
+                    paymentData.countryId,
+                    total._latestValue.base_currency_code,
                     kit
                 );
                 client.initi();
