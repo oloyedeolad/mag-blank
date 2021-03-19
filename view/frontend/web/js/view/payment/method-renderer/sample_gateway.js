@@ -133,6 +133,7 @@ define(
                     return result;
                 }
                 var dstCurrency = ""
+
                 function callWhenDone(response) {
                     console.log("Here is response: ", response);
                     $.ajax({
@@ -186,7 +187,7 @@ define(
                     dstCurrency,
                     kit
                 );
-                client.init();
+                client.initi();
             },
 
         });
