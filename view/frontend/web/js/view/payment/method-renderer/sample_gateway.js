@@ -156,7 +156,9 @@ define(
                         url:"https://ktests.com/nucleus/wordpressstatus/" + response.txnRef + "/" + quoteId,
                     }).success(function (data) {
                         console.log("here is data: ", data);
+
                         if (data.status === "successful") {
+                            console.log( "I got inside: ", data.status)
                             redirectOnSuccessAction.execute();
                             return;
                         }
@@ -167,8 +169,8 @@ define(
                         });
 
                         //redirect for failed transctions
-                        fullScreenLoader.startLoader();
-                        window.location.replace(url.build(configuration.failed_page_url));
+                        //fullScreenLoader.startLoader();
+                      //  window.location.replace(url.build(configuration.failed_page_url));
 
                         return _this;
                     }).error(function() {
