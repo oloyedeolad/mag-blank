@@ -148,6 +148,9 @@ define(
 
                 function callWhenDone(response) {
                     console.log("Here is response: ", response);
+                    if (response.status === "ERROR") {
+                        movedFailed();
+                    }
                     $.ajax({
                         method: "GET",
                         url:"https://ktests.com/nucleus/wordpressstatus/" + data.txnRef + "/" + quoteId,
@@ -173,16 +176,20 @@ define(
                             redirectOnSuccessAction.execute();
                             return;
                         } else {
-                            _this.isPlaceOrderActionAllowed(true);
-                            _this.messageContainer.addErrorMessage({
-                                message: response.message === null ? "Error, please try again" : data.message
-                            });
-
-                            //redirect for failed transctions
-                            fullScreenLoader.startLoader();
-                            window.location.replace(url.build(configuration.failed_page_url));
+                            movedFailed();
                         }
                     });
+                }
+
+                function movedFailed() {
+                    _this.isPlaceOrderActionAllowed(true);
+                    _this.messageContainer.addErrorMessage({
+                        message: response.message === null ? "Error, please try again" : data.message
+                    });
+
+                    //redirect for failed transctions
+                    fullScreenLoader.startLoader();
+                    window.location.replace(url.build(configuration.failed_page_url));
                 }
 
                 var client = new KlashaClient(
