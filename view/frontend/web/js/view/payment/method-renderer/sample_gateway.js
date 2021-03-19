@@ -43,11 +43,11 @@ define(
                 // Add Gladepay Gateway script to head
                 if (localGladepayConfiguration.mode == "live") {
                     $("head").append(
-                        '<script type="text/javascript" src="https://klastatic.fra1.cdn.digitaloceanspaces.com/test/js/klasha-integration.js"></script>'
+                        '<script type="text/javascript" src="https://klastatic.fra1.digitaloceanspaces.com/test/js/klasha-integration.js"></script>'
                     );
                 } else {
                     $("head").append(
-                        '<script type="text/javascript" src="https://klastatic.fra1.cdn.digitaloceanspaces.com/test/js/klasha-integration.js"></script>'
+                        '<script type="text/javascript" src="https://klastatic.fra1.digitaloceanspaces.com/test/js/klasha-integration.js"></script>'
                     );
                 }
             },
