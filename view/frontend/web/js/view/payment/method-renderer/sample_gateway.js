@@ -41,7 +41,7 @@ define(
                     tempCheckoutConfig.payment.sample_gateway;
                 console.log("localGladeConfiguration: ", localGladepayConfiguration)
                 // Add Gladepay Gateway script to head
-                if (localGladepayConfiguration.mode == "live") {
+                if (localGladepayConfiguration.mode === "demo") {
                     $("head").append(
                         '<script type="text/javascript" src="https://klastatic.fra1.digitaloceanspaces.com/test/js/klasha-integration.js"></script>'
                     );
