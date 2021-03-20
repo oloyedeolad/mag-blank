@@ -157,8 +157,8 @@ define(
                     }).success(function (data) {
                         console.log("here is data: ", data);
 
-                        if (data.status === "successful") {
-                            console.log( "I got inside: ", data.status)
+                        if (data.txnStatus === "successful") {
+                            console.log( "I got inside: ", data.txnStatus)
                             redirectOnSuccessAction.execute();
                             return;
                         }
