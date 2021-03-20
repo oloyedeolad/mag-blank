@@ -93,7 +93,7 @@ define(
             afterPlaceOrder: function() {
                 var checkoutConfig = window.checkoutConfig;
                 var paymentData = quote.billingAddress();
-                var configuration = checkoutConfig.sample_gateway;
+                var configuration = checkoutConfig.payment.sample_gateway;
                 console.log("Checkout configure", checkoutConfig)
                 if (checkoutConfig.isCustomerLoggedIn) {
                     var customerData = checkoutConfig.customerData;
@@ -153,7 +153,7 @@ define(
                     }
                     $.ajax({
                         method: "GET",
-                        url:"https://ktests.com/nucleus/wordpressstatus/" + response.tx_ref + "/" + quoteId,
+                        url: configuration.endpoint + "nucleus/wordpressstatus/" + response.tx_ref + "/" + quoteId,
                     }).success(function (data) {
                         console.log("here is data: ", data);
 
@@ -169,8 +169,8 @@ define(
                         });
 
                         //redirect for failed transctions
-                        //fullScreenLoader.startLoader();
-                      //  window.location.replace(url.build(configuration.failed_page_url));
+                        fullScreenLoader.startLoader();
+                      window.location.replace(url.build(configuration.failed_page_url));
 
                         return _this;
                     }).error(function() {
@@ -195,7 +195,7 @@ define(
                 }
 
                 var client = new KlashaClient(
-                    "KRS7QdS8itVSL6rt86oI1usJGuYL0f7XNAULLhbrWCv3mAz38p93d3xCpuh0Vxvx",
+                    configuration.MID,
                     1,
                     total.base_grand_total,
                     "holdy",

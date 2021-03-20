@@ -29,11 +29,11 @@ final class ConfigProvider implements ConfigProviderInterface
      */
     public function getConfig()
     {
-        $endpoint = "https://klastatic.fra1.digitaloceanspaces.com/test/js/klasha-integration.js";
+        $endpoint = "https://ktests.com/";
         $server_mode = "demo";
 
         if ($this->method->getConfigData('go_live')) {
-            $endpoint = "https://api.gladepay.com/checkout.js";
+            $endpoint = "https://gate.klasapps.com/";
             $server_mode = "live";
         }
         return [
@@ -43,6 +43,7 @@ final class ConfigProvider implements ConfigProviderInterface
                         ClientMock::SUCCESS => __('Success'),
                         ClientMock::FAILURE => __('Fraud')
                     ]*/
+                    'endpoint' => $endpoint,
                     'MID' => $this->method->getConfigData('client_mid'),
                     'failed_page_url' => $this->store->getBaseUrl() . 'checkout/onepage/failure',
                     'mode' => $server_mode

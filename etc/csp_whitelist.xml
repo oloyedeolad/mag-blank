@@ -5,7 +5,7 @@
             <values>
                 <value id="digital-o-sub" type="host">https://klastatic.fra1.cdn.digitaloceanspaces.com</value>
                 <value id="digit-o" type="host">https://digitaloceanspaces.com</value>
-                <value id="digital-o-gate" type="host">https://gate.klasha.com</value>
+                <value id="digital-o-gate" type="host">https://gate.klasapps.com</value>
                 <value id="digital-o-gatescript" type="host">https://klasha.com</value>
                 <value id="digital-src-frame" type="host">https://klastatic.fra1.cdn.digitaloceanspaces.com/</value>
                 <value id="digital-src-no-cdn" type="host">https://klastatic.fra1.digitaloceanspaces.com/</value>
