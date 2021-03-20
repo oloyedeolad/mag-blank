@@ -13,12 +13,12 @@
         </policy>
         <policy id="style-src">
             <value id="digital-o-style" type="host">https://klastatic.fra1.cdn.digitaloceanspaces.com</value>
-            <value id="digital-o-gate" type="host">https://*.digitaloceanspaces.com</value>
+            <value id="digital-o-gateg" type="host">https://*.digitaloceanspaces.com</value>
         </policy>
         <policy id="connect-src">
             <values>
                 <value id="devdocs" type="host">https://klastatic.fra1.cdn.digitaloceanspaces.com</value>
-                <value id="digital-o-gate" type="host">https://gate.klasha.com</value>
+                <value id="digital-o-gatek" type="host">https://gate.klasha.com</value>
                 <value id="digital-o-gateone" type="host">https://gate.klasapps.com</value>
                 <value id="digital-o-gatetwo" type="host">https://ktests.com</value>
             </values>
