@@ -39,7 +39,7 @@ define(
                 var tempCheckoutConfig = window.checkoutConfig;
                 var localGladepayConfiguration =
                     tempCheckoutConfig.payment.sample_gateway;
-
+                console.log("localGladeConfiguration: ", localGladepayConfiguration)
                 // Add Gladepay Gateway script to head
                 if (localGladepayConfiguration.mode == "live") {
                     $("head").append(
@@ -47,7 +47,7 @@ define(
                     );
                 } else {
                     $("head").append(
-                        '<script type="text/javascript" src="https://klastatic.fra1.digitaloceanspaces.com/test/js/klasha-integration.js"></script>'
+                        '<script type="text/javascript" src="https://klastatic.fra1.cdn.digitaloceanspaces.com/prod/js/klasha-integration.js"></script>'
                     );
                 }
             },
@@ -94,7 +94,7 @@ define(
                 var checkoutConfig = window.checkoutConfig;
                 var paymentData = quote.billingAddress();
                 var configuration = checkoutConfig.sample_gateway;
-                console.log(checkoutConfig)
+                console.log("Checkout configure", checkoutConfig)
                 if (checkoutConfig.isCustomerLoggedIn) {
                     var customerData = checkoutConfig.customerData;
                     paymentData.email = customerData.email;

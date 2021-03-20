@@ -4,7 +4,8 @@
  * See COPYING.txt for license details.
  */
 namespace Magento\SamplePaymentGateway\Model\Ui;
-
+use Magento\Payment\Helper\Data as PaymentHelper;
+use Magento\Store\Model\Store as Store;
 use Magento\Checkout\Model\ConfigProviderInterface;
 use Magento\SamplePaymentGateway\Gateway\Http\Client\ClientMock;
 
@@ -15,6 +16,12 @@ final class ConfigProvider implements ConfigProviderInterface
 {
     const CODE = 'sample_gateway';
 
+    public function __construct(PaymentHelper $paymentHelper, Store $store)
+    {
+        $this->method = $paymentHelper->getMethodInstance(self::CODE);
+        $this->store = $store;
+    }
+
     /**
      * Retrieve assoc array of checkout configuration
      *
@@ -22,13 +29,23 @@ final class ConfigProvider implements ConfigProviderInterface
      */
     public function getConfig()
     {
+        $endpoint = "https://klastatic.fra1.digitaloceanspaces.com/test/js/klasha-integration.js";
+        $server_mode = "demo";
+
+        if ($this->method->getConfigData('go_live')) {
+            $endpoint = "https://api.gladepay.com/checkout.js";
+            $server_mode = "live";
+        }
         return [
             'payment' => [
                 self::CODE => [
-                    'transactionResults' => [
+                   /* 'transactionResults' => [
                         ClientMock::SUCCESS => __('Success'),
                         ClientMock::FAILURE => __('Fraud')
-                    ]
+                    ]*/
+                    'MID' => $this->method->getConfigData('client_mid'),
+                    'failed_page_url' => $this->store->getBaseUrl() . 'checkout/onepage/failure',
+                    'mode' => $server_mode
                 ]
             ]
         ];
