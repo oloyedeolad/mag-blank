@@ -99,22 +99,22 @@ define(
                     var customerData = checkoutConfig.customerData;
                     paymentData.email = customerData.email;
                     // paymentData.phone = customerData.phone;
-                    console.log("Customer Data: ", customerData)
+                    //console.log("Customer Data: ", customerData)
                 } else {
                     var storageData = JSON.parse(
                         localStorage.getItem("mage-cache-storage")
                     )["checkout-data"];
                     paymentData.email = quote.guestEmail;
-                    console.log("storage Data: ", storageData);
+                   // console.log("storage Data: ", storageData);
                 }
 
                 var quoteId = checkoutConfig.quoteItemData[0].quote_id;
                 var total = quote.totals();
-                console.log(total)
+                //console.log(total)
                 var _this = this;
                 _this.isPlaceOrderActionAllowed(false);
-                console.log(quote);
-                console.log("Payment Data: ", paymentData);
+                //console.log(quote);
+                //console.log("Payment Data: ", paymentData);
                 var dstCurrency = ""
                 if (paymentData.countryId === "NG") {
                     dstCurrency = "NGN"
@@ -127,13 +127,14 @@ define(
                     phone: paymentData.telephone,
                     email: paymentData.email,
                     fullname: paymentData.firstname + " " + paymentData.lastname,
-                    tx_ref: makeid(10),
+                    tx_ref: makeid(12),
                     paymentType: "mag",
                     callBack: callWhenDone,
                 }
 
                 var $div = $('<div />').appendTo('body');
                 $div.attr('id', 'holdy');
+
                 function makeid(length) {
                     var result = "";
                     var characters =
@@ -142,12 +143,12 @@ define(
                     for (var i = 0; i < length; i++) {
                         result += characters.charAt(Math.floor(Math.random() * charactersLength));
                     }
-                    return result;
+                    return "jk-" + result;
                 }
 
 
                 function callWhenDone(response) {
-                    console.log("Here is response: ", response);
+                    //console.log("Here is response: ", response);
                     if (response.status === "ERROR") {
                         movedFailed(response);
                     }
@@ -155,10 +156,10 @@ define(
                         method: "GET",
                         url: configuration.endpoint + "nucleus/wordpressstatus/" + response.tx_ref + "/" + quoteId,
                     }).success(function (data) {
-                        console.log("here is data: ", data);
+                        //console.log("here is data: ", data);
 
                         if (data.txnStatus === "successful") {
-                            console.log( "I got inside: ", data.txnStatus)
+                            //console.log( "I got inside: ", data.txnStatus)
                             redirectOnSuccessAction.execute();
                             return;
                         }
