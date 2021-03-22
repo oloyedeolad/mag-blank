@@ -3,7 +3,6 @@
 
 namespace Magento\SamplePaymentGateway\Observer;
 use Magento\Framework\Event\ObserverInterface;
-use Magento\Framework\DataObject as Object;
 use Magento\Sales\Model\Order;
 use Magento\SamplePaymentGateway\Model\Ui\ConfigProvider;
 
