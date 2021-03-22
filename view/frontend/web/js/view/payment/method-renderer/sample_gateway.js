@@ -186,7 +186,7 @@ define(
                 function movedFailed(response) {
                     _this.isPlaceOrderActionAllowed(true);
                     _this.messageContainer.addErrorMessage({
-                        message: response.message === null ? "Error, please try again" : response.message
+                        message: response.status === null ? "Error, please try again" : response.status
                     });
 
                     //redirect for failed transctions
