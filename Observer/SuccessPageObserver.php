@@ -51,7 +51,7 @@ class SuccessPageObserver implements ObserverInterface
             // do something
             // your code goes here
 
-            $this->logger->debug('Logging HelloWorld Observer');
+           // $this->logger->debug('Logging HelloWorld Observer');
         }
     }
 
