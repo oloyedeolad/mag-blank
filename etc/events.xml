@@ -14,6 +14,6 @@
         <observer name="sample_payment_gateway_data_assign" instance="Magento\SamplePaymentGateway\Observer\DataAssignObserver" />
     </event>
     <event name="checkout_onepage_controller_success_action">
-        <observer name="sample_checkout_controller_success_action" instance="Magneto\SamplePaymentGateway\Observer\SuccessPageObserver"  />
+        <observer name="sample_checkout_controller_success_action" instance="Magento\SamplePaymentGateway\Observer\SuccessPageObserver"  />
     </event>
 </config>
