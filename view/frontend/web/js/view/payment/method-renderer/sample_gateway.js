@@ -149,7 +149,7 @@ define(
                 function callWhenDone(response) {
                     console.log("Here is response: ", response);
                     if (response.status === "ERROR") {
-                        movedFailed();
+                        movedFailed(response);
                     }
                     $.ajax({
                         method: "GET",
