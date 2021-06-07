@@ -28,7 +28,7 @@ define(
 
         return Component.extend({
             defaults: {
-                template: 'Magento_SamplePaymentGateway/payment/form',
+                template: 'Magento_KlashaPaymentGateway/payment/form',
                 transactionResult: ''
             },
 

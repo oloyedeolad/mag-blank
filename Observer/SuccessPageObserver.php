@@ -1,10 +1,10 @@
 <?php
 
 
-namespace Magento\SamplePaymentGateway\Observer;
+namespace Magento\KlashaPaymentGateway\Observer;
 use Magento\Framework\Event\ObserverInterface;
 use Magento\Sales\Model\Order;
-use Magento\SamplePaymentGateway\Model\Ui\ConfigProvider;
+use Magento\KlashaPaymentGateway\Model\Ui\ConfigProvider;
 
 
 class SuccessPageObserver implements ObserverInterface

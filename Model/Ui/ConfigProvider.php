@@ -3,11 +3,11 @@
  * Copyright © 2016 Magento. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\SamplePaymentGateway\Model\Ui;
+namespace Magento\KlashaPaymentGateway\Model\Ui;
 use Magento\Payment\Helper\Data as PaymentHelper;
 use Magento\Store\Model\Store as Store;
 use Magento\Checkout\Model\ConfigProviderInterface;
-use Magento\SamplePaymentGateway\Gateway\Http\Client\ClientMock;
+use Magento\KlashaPaymentGateway\Gateway\Http\Client\ClientMock;
 
 /**
  * Class ConfigProvider

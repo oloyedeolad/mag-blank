@@ -6,6 +6,6 @@
 
 \Magento\Framework\Component\ComponentRegistrar::register(
     \Magento\Framework\Component\ComponentRegistrar::MODULE,
-    'Magento_SamplePaymentGateway',
+    'Magento_KlashaPaymentGateway',
     __DIR__
 );

@@ -3,11 +3,11 @@
  * Copyright © 2016 Magento. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\SamplePaymentProvider\Test\Unit\Gateway\Http\Client;
+namespace Magento\KlashaPaymentProvider\Test\Unit\Gateway\Http\Client;
 
 use Magento\Payment\Gateway\Http\TransferInterface;
 use Magento\Payment\Model\Method\Logger;
-use Magento\SamplePaymentGateway\Gateway\Http\Client\ClientMock;
+use Magento\KlashaPaymentGateway\Gateway\Http\Client\ClientMock;
 
 class ClientMockTest extends \PHPUnit_Framework_TestCase
 {
